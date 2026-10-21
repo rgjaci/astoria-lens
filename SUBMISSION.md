@@ -125,16 +125,17 @@ same sequence works with a real menu from the venue.
 
 | Time | Do exactly this |
 | --- | --- |
-| **7:30** | PowerShell: `$env:GEMINI_API_KEY="..."` then `python tools/check_api.py`. It must print **PASS**. If not, follow the hint before touching anything else. |
-| **7:45** | `python tools/selftest.py` → **69/69 PASS** offline (no key, no network). This proves the request shape. |
-| **8:00** | `python server.py`, open <http://localhost:8000/?sample=menu>, click all four modes once on venue wifi. |
-| **8:20** | **FREEZE** — no code changes after this point. Repo public, README first screen names `gemma-4-26b-a4b-it`, no `.env`. |
-| **8:35** | Record the 60–90 s video (`static/samples/titlecard.png` → Explain → Translate → Read aloud → Ask). |
-| **8:50** | Submit via the event page: **Challenges → Add Submission**. Attach the video URL, then open it once. |
+| **now (≤8:00)** | PowerShell: `$env:GEMINI_API_KEY="..."` then `python tools/check_api.py`. It must print **PASS**. If it prints **HTTP 402**, the key's project is on prepay with no balance — Gemma 4 is free-tier only, so create a key in a **new AI Studio project** and rerun. |
+| **8:00** | `python tools/selftest.py` → **69/69 PASS** offline (no key, no network). This proves the request shape regardless of billing. |
+| **8:05** | `python server.py`, open <http://localhost:8000/?sample=menu>, click all four modes once on venue wifi. |
+| **8:35** | **FREEZE** — no code changes after this point. Repo public, README first screen names `gemma-4-26b-a4b-it`, no `.env`. |
+| **8:40** | Record the 60–90 s video (`static/samples/titlecard.png` → Explain → Translate → Read aloud → Ask). |
+| **8:55** | Submit via the event page: **Challenges → Add Submission**. Attach the video URL, then open it once. |
 | **9:15** | Demo with `?sample=menu` pre-loaded; recorded video one click away. |
 
-Go/no-go at 8:20: `check_api.py` PASS → live demo with the key. FAIL → run in labeled demo mode and
-say the word "demo" out loud; the UI labels it. Don't fight the network on stage.
+Go/no-go at 8:35: `check_api.py` PASS → live demo with the key. FAIL → **unset `GEMINI_API_KEY`**
+and run in labelled demo mode; say the word "demo" out loud. Do not demo with a broken key — a red
+billing error is worse than an honest labelled fallback. Don't fight the network on stage.
 
 ## 20-minute emergency path (if 8:20 arrives and it's not working)
 

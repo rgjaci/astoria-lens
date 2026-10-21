@@ -53,7 +53,9 @@ install — the server is standard library only, Python 3.9+.
 **Verify before you demo:** `python tools/check_api.py` makes one real vision call and prints the
 model, HTTP status, latency, and the first line of the answer. `python tools/selftest.py` runs 69
 offline checks (mock Gemini endpoint, no key, no network) covering all four modes, the exact request
-contract, and the error paths.
+contract, and the error paths. If `check_api.py` prints **HTTP 402**, that key's project is on
+pay-as-you-go/prepay with no balance and cannot call Gemma 4 (free-tier only) — create a key in a new
+AI Studio project with billing off, or run without a key in labelled demo mode.
 
 No API key? It still runs. The server falls back to **demo mode** with recorded sample output,
 clearly labelled `[DEMO MODE]` and a "demo mode" pill in the UI, so a live demo never dies on a

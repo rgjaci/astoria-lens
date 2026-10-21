@@ -208,6 +208,10 @@ def call_gemma(image_b64: str, mime: str, mode: str, lang: str, question: str):
                 message = json.loads(raw)["error"]["message"]
             except Exception:
                 pass
+            if exc.code == 402:
+                return None, ("HTTP 402: this key's Google Cloud project has no prepay balance, and "
+                              "Gemma 4 is free-tier only. Create a key in a NEW AI Studio project "
+                              "(no billing), or unset GEMINI_API_KEY to run in labelled demo mode.")
             if exc.code in (400, 403):
                 return None, ("Request rejected - check GEMINI_API_KEY and that your key can reach "
                               "this model. (%s) %s" % (exc.code, message[:400]))

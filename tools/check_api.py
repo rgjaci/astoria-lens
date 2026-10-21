@@ -60,6 +60,14 @@ HINTS = {
         "Wrong model id or endpoint. Valid model ids tonight: gemma-4-26b-a4b-it or\n"
         "        gemma-4-31b-it. Try: python tools/check_api.py --model gemma-4-31b-it"
     ),
+    402: (
+        "Billing block: this key's project is on pay-as-you-go/prepay with no balance, and\n"
+        "        Gemma 4 on the Gemini API is FREE-TIER ONLY, so that project cannot call it.\n"
+        "        Fix: https://aistudio.google.com/apikey -> Create API key -> 'Create new\n"
+        "        project' (do NOT enable billing), copy that key, and rerun this script.\n"
+        "        If that is not possible before demos: run server.py with NO key - the app\n"
+        "        then shows labelled demo mode instead of a billing error."
+    ),
     429: (
         "Rate limited or out of quota. Wait ~60 seconds and rerun - and if it repeats,\n"
         "        switch to a different key before the demo, not during it."
