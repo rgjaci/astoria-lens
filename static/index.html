@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Astoria Lens — point at anything, understand it</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">◉</span>
+      <div>
+        <h1>Astoria Lens</h1>
+        <p class="tag">Point at anything. Understand it.</p>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="pill" id="modelPill">gemma-4-26b-a4b-it</span>
+      <span class="pill pill-warn" id="demoPill" hidden>demo mode</span>
+      <span class="pill pill-ok" id="livePill" hidden>gemma 4 live</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="card capture" id="captureCard">
+      <div class="viewport" id="viewport">
+        <video id="video" autoplay playsinline muted></video>
+        <img id="preview" alt="Captured photo" hidden>
+        <div class="camera-note" id="cameraNote" hidden></div>
+        <div class="scan" id="scan" hidden></div>
+      </div>
+      <div class="controls">
+        <button id="shutter" class="primary">Take photo</button>
+        <button id="retake" class="ghost" hidden>Retake</button>
+        <label class="file ghost">
+          Choose photo
+          <input id="file" type="file" accept="image/*">
+        </label>
+        <button id="sampleMenu" class="ghost">Sample: menu</button>
+        <button id="sampleFlyer" class="ghost">Sample: flyer</button>
+      </div>
+      <p class="hint">Nothing leaves your laptop except one compressed photo, which goes to the Gemini API and is not stored.</p>
+    </section>
+
+    <section class="card result" id="resultCard" aria-live="polite">
+      <div class="result-head">
+        <div class="modes" role="group" aria-label="What to do with the photo">
+          <button class="mode active" data-mode="explain" title="What it is, the facts that matter, and what to do next.">Explain</button>
+          <button class="mode" data-mode="translate" title="Detected language, original script, translation, and what to do.">Translate</button>
+          <button class="mode" data-mode="read" title="A short plain-sentence script you can listen to, in your language.">Read aloud</button>
+          <button class="mode" data-mode="ask" title="One specific question about the photo, answered straight.">Ask</button>
+        </div>
+        <select id="lang" aria-label="Answer language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="el">Ελληνικά</option>
+          <option value="ar">العربية</option>
+          <option value="bn">বাংলা</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+      <p class="hint">Explain: what it is + the facts that matter + next step · Translate: language, original script, translation, action · Read aloud: plain sentences, spoken by the browser · Ask: just your one question.</p>
+
+      <div class="askbar" id="askbar" hidden>
+        <input id="question" type="text" maxlength="500" placeholder="Ask about this photo… e.g. does this contain nuts?">
+        <button id="askGo" class="primary small">Ask</button>
+      </div>
+
+      <div class="result-body" id="resultBody">
+        <p class="empty">Take a photo, pick one from your library, or load a sample.</p>
+      </div>
+
+      <div class="result-foot">
+        <span class="meta" id="meta"></span>
+        <div class="spacer"></div>
+        <button id="speak" class="ghost small" hidden>🔊 Read aloud</button>
+        <button id="copy" class="ghost small" hidden>Copy</button>
+      </div>
+      <div class="error" id="error" hidden></div>
+    </section>
+  </main>
+
+  <footer>
+    Built tonight at <strong>Hacktoberfest Hack Day</strong> · Astoria Tech Meetup ·
+    Gemma 4 (open weights) via Gemini API · MIT licensed
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
