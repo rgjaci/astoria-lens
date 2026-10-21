@@ -11,6 +11,7 @@ const state = {
   model: 'gemma-4-26b-a4b-it',
   demo: false,
   stream: null,
+  cameraMessage: '',
 };
 
 const SPEECH_LANG = {
@@ -94,7 +95,8 @@ function setMeta(text) {
 async function startCamera() {
   const video = $('video');
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    cameraNote('This browser will not give a page a camera here — use "Choose photo" or a sample.');
+    state.cameraMessage = 'This browser will not give a page a camera here — use "Choose photo" or a sample.';
+    if (!state.prepared) cameraNote(state.cameraMessage);
     $('shutter').disabled = true;
     return;
   }
@@ -105,10 +107,13 @@ async function startCamera() {
     });
     video.srcObject = state.stream;
     await video.play();
+    state.cameraMessage = '';
     cameraNote('');
     $('shutter').disabled = false;
   } catch (err) {
-    cameraNote('Camera unavailable (' + (err.name || 'blocked') + '). Use "Choose photo" or a sample below.');
+    state.cameraMessage = 'Camera unavailable (' + (err.name || 'blocked') + '). Use "Choose photo" or a sample below.';
+    // The camera answer can arrive after a sample was chosen - never cover a loaded photo.
+    if (!state.prepared) cameraNote(state.cameraMessage);
     $('shutter').disabled = true;
   }
 }
@@ -167,6 +172,7 @@ function setPrepared(prepared) {
 
 function retake() {
   state.prepared = null;
+  cameraNote(state.cameraMessage || '');
   $('preview').hidden = true;
   $('preview').style.display = 'none';
   $('preview').removeAttribute('src');

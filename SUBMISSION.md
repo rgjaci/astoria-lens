@@ -73,15 +73,18 @@ Host sets the demo format; keep a 60–90 s recording anyway as a backup and for
 
 | Time | Shot | Line |
 | --- | --- | --- |
-| 0:00 | Title card: Astoria Lens | "Astoria is one of the most multilingual places on earth. Its paper isn't." |
-| 0:08 | Hold a real Greek menu / click Sample: menu | "This is a menu a few blocks from here. I can't read it." |
-| 0:15 | Click **Explain** | "Explain gives me what it is and what actually matters — prices, and that I order at the counter." |
-| 0:28 | Switch to **Translate** | "Translate gives me the original text, the English, and the one thing I have to do." |
-| 0:38 | Switch language to Ελληνικά / Español | "Same photo, my grandmother's language." |
-| 0:48 | Click **Read aloud** | (browser speaks) "For anyone who'd rather be read to." |
-| 0:58 | Switch to **Ask**, type "does this contain nuts?" | "And it answers the question the document doesn't spell out." |
-| 1:10 | Cut to repo + `skills.md` | "MIT, no dependencies, and the same skill drops into any agent. Gemma 4 is doing the seeing — open weights, my laptop is just the window." |
-| 1:20 | Kill the key / show demo mode | "And if the API dies mid-demo, it degrades to a labelled demo mode instead of a blank screen." |
+| 0:00 | Title card (`static/samples/titlecard.png`) | "Astoria is one of the most multilingual places on earth. Its paper isn't." |
+| 0:08 | Click Sample: menu, then **Explain** (~3 s) | "A menu a few blocks from here. Explain gives me what matters — cash-only under $10, the allergen note, where to go." |
+| 0:22 | **Ask**: "does this contain nuts?" (~2 s) | "Ask answers the question the paper doesn't spell out." |
+| 0:33 | **Read aloud** (~3 s) | (browser speaks) "For anyone who'd rather be read to." |
+| 0:44 | Switch language to Ελληνικά while in Read aloud | "Same photo, my grandmother's language." |
+| 0:55 | **Translate** (~10 s — keep talking) | "Translate gives the original script and the English. This one is doing the full transcription, so it takes about ten seconds." |
+| 1:15 | Cut to repo + `skills.md` | "MIT, no dependencies, and the same skill drops into any agent. Gemma 4 is doing the seeing — open weights, my laptop is just the window." |
+| 1:25 | Show `?sample=menu` / kill the key | "And if the API dies, it degrades to a labelled demo mode instead of a blank screen." |
+
+**Timing reality (measured live):** Explain ~3.3 s · Ask ~1.8 s · Read aloud ~3.4 s · Translate
+~10–13 s on a text-heavy menu. Put Translate last or narrate through it — every other mode is a
+2–4 s beat, so the demo feels instant.
 
 Record with the browser window maximized and one window only. If the host allows a live demo, the
 same sequence works with a real menu from the venue.

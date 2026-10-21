@@ -10,8 +10,12 @@ Built at **Hacktoberfest Hack Day — Astoria Tech Meetup × MLH**, October 21, 
 
 ![Astoria Lens: Explain mode on the menu sample](static/samples/screenshot.png)
 
-*Explain mode on the bundled menu sample. This capture is the labelled demo mode (no API key); with
-`GEMINI_API_KEY` set, the same click is a live Gemma 4 call.*
+*Explain mode on the bundled menu sample — a live Gemma 4 call (3.3 s), answering in place. The same
+photo works in Translate, Read aloud, and Ask, and `?sample=menu` loads it without a camera.*
+
+Measured on a laptop against the live API: **Explain ~3.3 s · Ask ~1.8 s · Read aloud ~3.4 s ·
+Translate ~10–13 s** (it transcribes the whole original script, so it is the slow mode — run it last
+or keep talking through it).
 
 ---
 
