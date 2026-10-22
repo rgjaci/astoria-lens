@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the 1280x720 title card for the demo video.
 
-    C:\\Users\\r_gja.QW\\.dsh\\dsh-runtimes\\dsh-primary-runtime\\dependencies\\python\\python.exe tools/make_title_card.py
+    python tools/make_title_card.py
 
 Writes static/samples/titlecard.png. Uses Pillow, which exists only in the
 bundled interpreter (system python has no Pillow). Stdlib + Pillow, no installs.

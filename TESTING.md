@@ -8,7 +8,7 @@ pass** you should run once before demos. Total time: under 5 minutes.
 ## 0. Automated offline — 30 seconds, no key, no network
 
 ```powershell
-cd C:\Users\r_gja.QW\Code\testing\astoria-lens
+cd astoria-lens
 python tools\selftest.py
 ```
 
